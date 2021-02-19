@@ -11,13 +11,16 @@
 (function () {
   'use strict';
   angular.module('inventory')
-    .service('$pouchDB', ["$q", function ($q) {
+    .service('$pouchDB', ["$q", DatabaseService]);
+    
+  /*@ngInject*/
+  function DatabaseService($q) {
       PouchDB('pouchdbfind');
       var db;
+      var self = this;
       var dbName = 'inventory-management-system-dev';
       const USER_COL_PREFIX = 'USER';
       const PRODUCT_COL_PREFIX = 'PRODUCT';
-
       this.createDatabase = function () {
         db = new PouchDB(dbName, {
           auto_compaction: true
@@ -26,8 +29,8 @@
         this.createIndexes();
       }
 
-      this.createIndexes() = function () {
-        this.db.createIndex({
+      this.createIndexes = function () {
+        db.createIndex({
           index: {
             fields: ['email', 'password']
           }
@@ -40,7 +43,7 @@
        * 
        * @returns Promise
        */
-      getDocumentById() = function (id) {
+      this.getDocumentById = function (id) {
         return db.get(id);
       }
 
@@ -50,11 +53,11 @@
        * 
        * @returns Promise 
        */
-      createDocument = function (data) {
+      this.createDocument = function (data) {
         var deferred = $q.defer();
         db.put(data).then(function (response) {
           if (response.ok) {
-            this.getDocumentById(docResult.id).then(function (res) {
+            self.getDocumentById(docResult.id).then(function (res) {
               deferred.resolve(res);
             }).catch(function (err) {
               deferred.reject(err);
@@ -74,7 +77,7 @@
        * 
        * @returns Promise 
        */
-      updateDocument = function (id, data) {
+      this.updateDocument = function (id, data) {
         var deferred = $q.defer();
         this.getDocumentById(docResult.id).then(function (doc) {
           data = Object.assign(doc, data);
@@ -98,7 +101,7 @@
        * @param {*} id unique document _id
        * 
        */
-      deleteDocument = function (id) {
+      this.deleteDocument = function (id) {
         var deferred = $q.defer();
         this.getDocumentById(id).then(function (doc) {
           if (doc._id) {
@@ -121,7 +124,7 @@
        * 
        * @returns [IProduct] Array
        */
-      getAllProducts = function () {
+      this.getAllProducts = function () {
         var deferred = $q.defer();
         db.allDocs({
           include_docs: true,
@@ -148,7 +151,7 @@
         return deferred.promise;
       }
 
-      deleteMultipleProducts = function (ids) {
+      this.deleteMultipleProducts = function (ids) {
         $q.all(ids.map((id) => {
           return this.deleteDocument(id)
         }));
@@ -158,7 +161,7 @@
        * check user exist in db 
        * @param credentials 
        */
-      checkUserCredentials = function (credentials) {
+      this.checkUserCredentials = function (credentials) {
         var deferred = $q.defer();
         db.find({
           selector: credentials,
@@ -192,8 +195,8 @@
               name: 'Test User',
               password: '123456'
             }
-            this.createDocument(userDetails);
+            self.createDocument(userDetails);
           })
       }
-    }])
+    }
 })();

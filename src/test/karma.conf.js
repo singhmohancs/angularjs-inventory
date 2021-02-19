@@ -32,10 +32,14 @@ module.exports = function (config) {
     files: [
       // bower:js
       
+      'bower_components/angular-mocks/angular-mocks.js',
+      
       // endbower
       
 
       // app:js
+      
+      'src/app/app.constants.js',
       
       // endapp
 
