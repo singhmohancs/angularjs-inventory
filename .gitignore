@@ -1,0 +1,13 @@
+.DS_Store
+bower_components
+node_modules
+target
+src/app/app.constants.js
+src/public/index.html
+.idea
+.env
+npm-debug.log
+debug.log
+app.css
+.vscode/
+private

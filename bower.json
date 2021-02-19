@@ -1,0 +1,55 @@
+{
+  "version": "1.0.0",
+  "name": "inventory",
+  "appPath": "src/app/",
+  "testPath": "src/test/spec",
+  "dependencies": {
+    "angular": "1.7.x",
+    "angular-aria": "1.7.x",
+    "angular-bootstrap": "2.3.1",
+    "angular-cache-buster": "0.4.3",
+    "angular-i18n": "1.7.x",
+    "ngstorage": "0.3.10",
+    "angular-resource": "1.7.x",
+    "angular-sanitize": "1.7.x",
+    "tether": "^1.3.2",
+    "bootstrap": "4.0.0-alpha.6",
+    "jquery": "2.2.4",
+    "modernizr": "3.3.1",
+    "angular-animate": "1.7.x",
+    "angular-messages": "1.7.x",
+    "lodash": "^4.17.4",
+    "angular-cookies": "^1.8.2",
+    "angular-ui-router": "^1.0.29"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.7.x"
+  },
+  "overrides": {
+    "angular": {
+      "dependencies": {
+        "jquery": "2.2.4"
+      }
+    },
+    "angular-cache-buster": {
+      "dependencies": {
+        "angular": "1.7.x"
+      }
+    },
+    "angular-dynamic-locale": {
+      "dependencies": {
+        "angular": "1.7.x"
+      }
+    },
+    "angular-animate": {
+      "dependencies": {
+        "angular": "1.7.x"
+      }
+    }
+  },
+  "resolutions": {
+    "angular": "1.7.x",
+    "angular-cookies": "^1.8.2",
+    "angular-ui-router": "^1.0.29"
+  }
+}

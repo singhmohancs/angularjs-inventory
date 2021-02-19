@@ -1,0 +1,32 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+    RewriteBase /
+    RewriteEngine On
+
+    # Redirect Trailing Slashes If Not A Folder...
+    #RewriteCond %{REQUEST_FILENAME} !-d
+    #RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Handle Front Controller...
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !index
+    #Add extra extensions needed.
+    RewriteCond %{REQUEST_URI} !.*\.(css|js|html|png)
+    RewriteRule (.*) index.html [L]
+
+    #RewriteCond %{REQUEST_FILENAME} -s [OR]
+    #RewriteCond %{REQUEST_FILENAME} -l [OR]
+    #RewriteCond %{REQUEST_FILENAME} -d
+    #RewriteRule ^.*$ - [NC,L]
+    #RewriteRule ^(.*) /index.html [NC,L]
+
+
+
+    # Handle Authorization Header
+    #RewriteCond %{HTTP:Authorization} .
+    #RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+</IfModule>
