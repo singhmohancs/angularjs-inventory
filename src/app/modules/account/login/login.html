@@ -1,0 +1,26 @@
+<div class="auth-wrapper">
+  <div class="d-flex align-items-center justify-content-center h-100">
+    <div class="card card-signin my-5 auth-card">
+      <div class="card-header bg-transparent p-4">
+        <h3>Inventory Management System</h3>
+      </div>
+      <div class="card-body p-4">
+        <h5 class="card-title text-center">Login</h5>
+        <div class="alert alert-danger" ng-show="authFailed">
+          Please check your credentials and try again.
+        </div>
+        <form ng-submit="login()" name="loginForm">
+          <div class="form-label-group mb-3">
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" ng-model="email" required autofocus>
+          </div>
+
+          <div class="form-label-group mb-3">
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" ng-model="password" required>
+          </div>
+
+          <button class="btn btn-lg btn-primary btn-block text-uppercase mt-5" type="submit">Sign in</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

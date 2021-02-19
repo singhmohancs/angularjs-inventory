@@ -2,3 +2,17 @@
 body{
   background-color: pink;
 }
+$theme-colors: (
+  "primary": $primary
+);
+
+.auth-wrapper {
+  height: 100vh;
+  .auth-card {
+    width: 100%;
+    max-width: 600px;
+    .mat-form-field-wrapper {
+      width: 100%;
+    }
+  }
+}

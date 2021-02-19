@@ -11,5 +11,5 @@
 (function () {
   'use strict';
   angular
-    .module('inventory.shared', ['inventory.core']);
+    .module('inventory.product', ['inventory.core']);
 })();
